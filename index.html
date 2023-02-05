@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #generatedURL {
+        margin-top: 10px;
+        text-align: center;
+      }
+      @media (min-width: 600px) {
+        .container {
+          flex-direction: row;
+        }
+        input[type="text"] {
+          width: 40%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        ACCNO: <input type="text" id="accno"><br>
+        Billing Month: <input type="text" id="billingMonth"><br>
+        <button onclick="generateURL()">Generate URL</button>
+      </div>
+      <div id="generatedURL"></div>
+    </div>
+    <script>
+      function generateURL() {
+        var accno = document.getElementById("accno").value;
+        var billingMonth = document.getElementById("billingMonth").value;
+        var ward = 2;
+        var tariff1 = 'LTIB';
+        var tariff2 = '';
+        var flag = 1;
+        var url = "https://dashboard.bestundertaking.net:9595/duplicatebill/DuplicateBill?accno=" + accno + "&billingMonth=" + billingMonth + "&ward=" + ward + "&tariff1=" + tariff1 + "&tariff2=" + tariff2 + "&flag=" + flag;
+        document.getElementById("generatedURL").innerHTML = "<a href='" + url + "'>Generated URL</a>";
+      }
+    </script>
+  </body>
+</html>
